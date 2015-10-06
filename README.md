@@ -1,5 +1,9 @@
 # myconf
 
+[![NPM version](https://img.shields.io/npm/v/myconf.svg?style=flat-square)](https://www.npmjs.com/package/myconf)
+[![NPM download](https://img.shields.io/npm/dm/myconf.svg?style=flat-square)](https://www.npmjs.com/package/myconf)
+[![David Status](https://img.shields.io/david/egoist/myconf.svg?style=flat-square)](https://david-dm.org/egoist/myconf)
+
 Easily manage a config file in your project.
 
 ## Example
