@@ -1,5 +1,5 @@
 var assert = require("assert")
-var Config = require('./lib/dotconfig')
+var Config = require('./lib/myconf')
 var config = new Config('.testrc')
 
 

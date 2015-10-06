@@ -2,7 +2,7 @@
   "name": "myconf",
   "version": "0.0.1",
   "description": "Easily manage a config file in your project.",
-  "main": "lib/dotconfig.js",
+  "main": "lib/myconf.js",
   "scripts": {
     "test": "mocha test.js",
     "dev": "babel src/*.js -o lib/*.js --watch"
