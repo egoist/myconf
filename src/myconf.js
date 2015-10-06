@@ -8,7 +8,9 @@ class Config {
   constructor(filename) {
 
     const validFilename = dotFileRe.test(filename)
-
+    if (!validFilename) {
+      return console.error(`the filename '${filename}' is not valid`)
+    }
     this.filename = filename
     this.filepath = Home(filename)
   }
@@ -38,7 +40,7 @@ class Config {
         } else if (typeof key === 'string') {
           filedata[key] = value
         }
-        
+
         try {
           await _.saveFile(this.filepath, filedata)
           resolve(filedata)

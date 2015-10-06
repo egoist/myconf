@@ -1,11 +1,12 @@
 {
   "name": "myconf",
-  "version": "0.0.1",
+  "version": "0.0.11",
   "description": "Easily manage a config file in your project.",
   "main": "lib/myconf.js",
   "scripts": {
     "test": "mocha test.js",
-    "dev": "babel src/*.js -o lib/*.js --watch"
+    "dev": "gulp",
+    "build": "gulp build"
   },
   "author": "",
   "license": "ISC",
