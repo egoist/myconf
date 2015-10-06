@@ -1,4 +1,4 @@
-# dotconfig
+# myconf
 
 Easily manage a config file in your project.
 
