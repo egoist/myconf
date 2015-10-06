@@ -5,7 +5,7 @@ Easily manage a config file in your project.
 ## Example
 
 ```javascript
-import Config from 'dotconfig'
+import Config from 'myconf'
 
 // This points to a file $USER_HOME/.customconfig
 const config = new Config('.customconfig')
