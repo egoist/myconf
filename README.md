@@ -6,6 +6,8 @@
 
 Easily manage a config file in your project.
 
+You always want to make it possible for users to save some custom configs with a Node.js command line tool, such like you made a node-version Git tool and wanna save the configs to `/Users/$username/.gitconfig`. That's why I made this tool to facilitate your development.
+
 ## Example
 
 ```javascript
