@@ -15,6 +15,11 @@ config
   .set('name', 'config for my project')
   .then(data => console.log(data.name))
 
+// set multi properties
+config
+  .set({name: 'egoist', version: '1.4.2'})
+  .then(data => console.log(data))
+
 // get a property
 config
   .get('name')
