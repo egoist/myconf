@@ -1,5 +1,6 @@
 # app
 lib/
+.testrc
 
 # Logs
 logs

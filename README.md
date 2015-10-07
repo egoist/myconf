@@ -16,6 +16,13 @@ import Config from 'myconf'
 // This points to a file $USER_HOME/.customconfig
 const config = new Config('.customconfig')
 
+// or save the file to a custom path
+config.path('/path/to/save/to')
+
+// or change a parser, the default is `json`
+// parser in ['json', 'yaml']
+config.parser('yaml')
+
 // set a property
 config
   .set('name', 'config for my project')
@@ -35,6 +42,11 @@ config
 config
   .get()
   .then(data => console.log(data.name))
+
+// override the config file
+config
+  .save({newName: 'inori', oldName: 'will_gone'})
+  .then(data => console.log(data))
 ```
 
 ## License

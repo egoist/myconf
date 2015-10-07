@@ -1,6 +1,7 @@
 import Home from 'home-dir'
 import _ from './utils'
 import 'babel/polyfill'
+import path from 'path'
 
 const dotFileRe = /^(\.[^\/]*)$/
 
@@ -13,9 +14,20 @@ class Config {
     }
     this.filename = filename
     this.filepath = Home(filename)
+    this.fileparser = 'json'
   }
 
-  get (key) {
+  path(filepath = Home()) {
+    this.filepath = path.resolve(filepath + `/${this.filename}`)
+    return this
+  }
+
+  parser(parser = 'json') {
+    this.fileparser = parser
+    return this
+  }
+
+  get(key) {
     return new Promise((resolve, reject) => {
       (async() => {
         let filedata = await _.readFile(this.filepath)
@@ -31,7 +43,7 @@ class Config {
 
     return new Promise((resolve, reject) => {
       (async() => {
-        let filedata = await _.readFile(this.filepath)
+        let filedata = await _.readFile(this.filepath, this.fileparser)
         filedata = filedata ? filedata : {}
         if (typeof key === 'object') {
           for (var prop in key) {
@@ -42,7 +54,7 @@ class Config {
         }
 
         try {
-          await _.saveFile(this.filepath, filedata)
+          await _.saveFile(this.filepath, filedata, this.fileparser)
           resolve(filedata)
         } catch (err) {
           console.error(err)
@@ -51,6 +63,19 @@ class Config {
 
     })
 
+  }
+
+  save(filedata) {
+    return new Promise((resolve, reject) => {
+      (async() => {
+        try {
+          await _.saveFile(this.filepath, filedata, this.fileparser)
+          resolve(filedata)
+        } catch (err) {
+          console.error(err)
+        }
+      }())
+    })
   }
 
 }
