@@ -30,7 +30,7 @@ class Config {
   get(key) {
     return new Promise((resolve, reject) => {
       (async() => {
-        let filedata = await _.readFile(this.filepath)
+        let filedata = await _.readFile(this.filepath, this.fileparser)
         if (key) {
           return resolve(filedata && filedata[key])
         }

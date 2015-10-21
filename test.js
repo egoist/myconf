@@ -13,7 +13,7 @@ describe('main', function () {
     .then(function (data) {
       config.get('version')
       .then(function(version) {
-         assert.equal(version, '1.4.2')
+        assert.equal(version, '1.4.2')
       })
     })
   })
@@ -29,4 +29,10 @@ describe('main', function () {
         assert.equal(data.hello, '2016')
       })
   })
+  it('should get object and return string', function () {
+    config.parser('yaml').get('version').then(version => {
+      assert.equal(typeof version, 'string')
+    })
+  })
 })
+

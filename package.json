@@ -1,6 +1,6 @@
 {
   "name": "myconf",
-  "version": "0.0.2",
+  "version": "0.0.21",
   "description": "Easily manage a config file in your project.",
   "main": "lib/myconf.js",
   "scripts": {
