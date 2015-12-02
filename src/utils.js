@@ -9,10 +9,11 @@ export default {
     return new Promise ((resolve, reject) => {
       pathExists(filepath).then(exists => {
         if (exists) {
-          let filedata = fs.readFileSync(filepath, 'utf8')
+          let filedata
           if (parser === 'json') {
-            filedata = JSON.parse(filedata)
+            filedata = require(filepath)
           } else if (parser === 'yaml') {
+            filedata = fs.readFileSync(filepath, 'utf8')
             filedata = yaml.safeLoad(filedata)
           }
           return resolve(filedata)

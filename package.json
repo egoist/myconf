@@ -1,6 +1,6 @@
 {
   "name": "myconf",
-  "version": "0.0.21",
+  "version": "0.0.3",
   "description": "Easily manage a config file in your project.",
   "main": "lib/myconf.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "build": "gulp build"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-babel": "^5.2.1",
