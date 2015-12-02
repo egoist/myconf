@@ -10,8 +10,7 @@ test('json', t => {
       config
         .get('version')
         .then(v => {
-          console.log(v)
-          t.pass()
+          t.is(v, '0.0.1')
         })
     })
 })

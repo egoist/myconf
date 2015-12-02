@@ -7,7 +7,6 @@ const dotFileRe = /^(\.[^\/]*)$/
 
 class Config {
   constructor(filename) {
-
     const validFilename = dotFileRe.test(filename)
     if (!validFilename) {
       return console.error(`the filename '${filename}' is not valid`)
@@ -28,54 +27,44 @@ class Config {
   }
 
   get(key) {
-    return new Promise((resolve, reject) => {
-      (async() => {
-        let filedata = await _.readFile(this.filepath, this.fileparser)
-        console.log(filedata)
-        if (key) {
-          return resolve(filedata && filedata[key])
-        }
-        return resolve(filedata)
-      }())
+    return new Promise(async (resolve, reject) => {
+      let filedata = await _.readFile(this.filepath, this.fileparser)
+      if (key) {
+        return resolve(filedata && filedata[key])
+      }
+      return resolve(filedata)
     })
   }
 
   set(key, value) {
 
-    return new Promise((resolve, reject) => {
-      (async() => {
-        let filedata = await _.readFile(this.filepath, this.fileparser)
-        filedata = filedata ? filedata : {}
-        if (typeof key === 'object') {
-          for (var prop in key) {
-            filedata[prop] = key[prop]
-          }
-        } else if (typeof key === 'string') {
-          filedata[key] = value
+    return new Promise(async (resolve, reject) => {
+      let filedata = await _.readFile(this.filepath, this.fileparser)
+      filedata = filedata ? filedata : {}
+      if (typeof key === 'object') {
+        for (var prop in key) {
+          filedata[prop] = key[prop]
         }
-
-        try {
-          await _.saveFile(this.filepath, filedata, this.fileparser)
-          resolve(filedata)
-        } catch (err) {
-          console.error(err)
-        }
-      }())
-
+      } else if (typeof key === 'string') {
+        filedata[key] = value
+      }
+      try {
+        await _.saveFile(this.filepath, filedata, this.fileparser)
+        resolve(filedata)
+      } catch (err) {
+        console.error(err)
+      }
     })
-
   }
 
   save(filedata) {
-    return new Promise((resolve, reject) => {
-      (async() => {
-        try {
-          await _.saveFile(this.filepath, filedata, this.fileparser)
-          resolve(filedata)
-        } catch (err) {
-          console.error(err)
-        }
-      }())
+    return new Promise(async (resolve, reject) => {
+      try {
+        await _.saveFile(this.filepath, filedata, this.fileparser)
+        resolve(filedata)
+      } catch (err) {
+        console.error(err)
+      }
     })
   }
 
